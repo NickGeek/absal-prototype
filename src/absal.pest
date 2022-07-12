@@ -1,0 +1,13 @@
+alpha = _{ 'a'..'z' | 'A'..'Z' }
+digit = _{ '0'..'9' }
+
+x = { (alpha | digit)+ }
+
+t = _{ x | tApp | tAbs }
+tApp = { "(" ~ t ~ " " ~ t ~ ")" }
+tAbs = { "(λ" ~ x ~ "." ~ t ~ ")" }
+
+e = _{ x | eApp | eAbs }
+n = { digit+ }
+eApp = { "(" ~ e ~ " " ~ e ~ ")" }
+eAbs = { "(λ" ~ n ~ x ~ "." ~ e ~ ")" }
